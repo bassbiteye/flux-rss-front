@@ -27,7 +27,7 @@
             <!-- Article data -->
             <div class="row mb-3">
               <div class="col-6">
-                <button  class="btn btn-success" data-bs-toggle="modal" [attr.data-bs-target]="'#modal'">
+                <button  class="btn btn-success"(click)="openPopup()">
                   <i class="fas fa-plane"></i>
                   Modifier
                 </button>
@@ -51,31 +51,44 @@
            
           </div>
           <!-- News block -->
-          <div class="modal fade" [id]="'modal'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <form (ngSubmit)="onSubmitForm()">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modifier Titre et contenu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <input id="title" name="title" type="text" >
-                    <textarea id="content" name="content" type="text" ></textarea>
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">enregistrer</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
-
-                  </div>
+          
+<div
+class="modal"
+tabindex="-1"
+role="dialog"
+[ngStyle]="{'display':displayStyle}">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Modifier Titre et extrait</h4>
+    </div>
+    <div class="modal-body">
+    
+               <form>
+                <div class="form-group">
+                  <label for="title" class="col-form-label">titre:</label>
+                  <input type="text" class="form-control" id="title" name="title"  [(ngModel)]="feed.title">
+                </div>
+                <div class="form-group">
+                  <label for="contenu" class="col-form-label">extrait:</label>
+                  <textarea class="form-control" id="contenu" name="contenu" [(ngModel)]="feed.description"></textarea>
                 </div>
               </form>
-            </div>
-          </div>
-        
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" 
+              (click)="closePopup()">
+        fermer
+      </button>
+      <button type="button" class="btn btn-primary" 
+      (click)="closePopup()">
+enregister
+</button>
+    </div>
+  </div>
+</div>
+</div>
         </div>
-        
 
         
       </div>

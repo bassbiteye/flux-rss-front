@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     NgxPaginationModule,
     AppRoutingModule,
     HttpClientModule,
-
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

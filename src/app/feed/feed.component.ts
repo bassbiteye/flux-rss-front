@@ -12,27 +12,20 @@ export class FeedComponent implements OnInit {
   Lenght : any ;
   page : number = 1 ;
   feeds : any ;
-  title! : string ;
-  description! : string ;
+  displayStyle = "none";
+
   ngOnInit(): void {
     this.feedServiceService.getFeeds().subscribe((data: any) =>{
-      console.log("data", data) ;
       this.Lenght = data.lenght ;
       this.feeds = data ;
-     // this.title = data.feed.title ;
-     // this.description = data.feed.description ;
     })
   }
-  changeTitle(post:any) {
-    post.title = "title modifer";
+  
+  openPopup() {
+    this.displayStyle = "block";
   }
-
-  changeContent(post:any) {
-    post.content = "contenu modifer";
-  }
-
-  onSubmitForm() {
-    console.log("titre modifier")
+  closePopup() {
+    this.displayStyle = "none";
   }
 
 }
